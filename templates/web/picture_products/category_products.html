@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="category-products">
+        <h2>Products in "{{ category.name }}"</h2>
+        <div class="product-grid">
+            {% for product in products %}
+            <div class="product-item">
+                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                <h3>{{ product.name }}</h3>
+                <p>${{ product.price }}</p>
+                <a href="{% url 'picture_products:product_detail' product.id %}" class="btn">View Details</a>
+            </div>
+            {% empty %}
+            <p>No products available in this category.</p>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

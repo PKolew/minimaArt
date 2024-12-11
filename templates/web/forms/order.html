@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+<div class="order-form-container">
+    <h2>Place Your Order</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="order-submit-button">Submit Order</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% load static%}
+
+{% block title %}Home - Art Gallery{% endblock %}
+
+{% block content %}
+<div class="wellcome">
+    <div class="wellcome_img">
+        <img class="cover_img" src="{% static 'imgs/cover.jpg' %}" alt="Art Piece">
+        <div class="wellcome_text">
+            <h2>Hello, this is a test text.</h2>
+            <p>Discover our collection of unique and exquisite artworks.</p>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <!-- Art Items -->
+    <div class="art-item">
+        <img src="{% static 'imgs/landscape/IMG_7084.jpg' %}" alt="Art Piece 1">
+        <div class="art-details">
+            <h2>Landscape</h2>
+            <a href="{% url 'picture_products:gallery' %}" class="buy-button">Browse</a>
+        </div>
+    </div>
+
+    <div class="art-item">
+        <img src="{% static 'imgs/love/IMG_9898.jpg' %}" alt="Art Piece 2">
+        <div class="art-details">
+            <h2>Love</h2>
+            <a href="{% url 'picture_products:gallery' %}" class="buy-button">Browse</a>
+        </div>
+    </div>
+
+    <div class="art-item">
+        <img src="{% static 'imgs/for kids/IMG_8114.jpg' %}" alt="Art Piece 3">
+        <div class="art-details">
+            <h2>For the Little Ones</h2>
+            <a href="{% url 'picture_products:gallery' %}" class="buy-button">Browse</a>
+        </div>
+    </div>
+
+    <div class="art-item">
+        <img src="{% static 'imgs/extravagand/IMG_7364.jpg' %}" alt="Art Piece 4">
+        <div class="art-details">
+            <h2>Extravagant</h2>
+            <a href="{% url 'picture_products:gallery' %}" class="buy-button">Browse</a>
+        </div>
+    </div>
+    
+<div class="about">
+    <h2>About Us</h2>
+        <div class="img_">
+            <img class="about_picture" src="{% static 'imgs/ivi_bobi.jpg' %}" alt="Team">
+        </div>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Aenean luctus urna id mi viverra, nec bibendum leo facilisis. Cras tempor dolor vel nunc efficitur, sit amet
+        ultrices magna ultrices. Nam fringilla, ex in cursus feugiat, sapien nisi interdum eros, sed pharetra sem lacus ut lacus.
+        Donec et justo eu risus consequat tincidunt.
+        Interdum et malesuada fames ac ante ipsum primis in faucibus.
+        Vivamus tempor turpis a dui porta, at vestibulum mi auctor. Proin vulputate eros non porta auctor..
+    </p>
+</div>
+
+<div class="technology">
+    <div class="technology-wraper">
+        <h2>Technology</h2>
+        <img class="technology-img" src="{% static 'imgs/texture/IMG_6882.jpg' %}" alt="Technology">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean luctus urna id mi viverra, nec bibendum leo facilisis. Cras tempor dolor vel nunc efficitur, sit amet ultrices magna ultrices. Nam fringilla, ex in cursus feugiat, sapien nisi interdum eros, sed pharetra sem lacus ut lacus. Donec et justo eu risus consequat tincidunt. Interdum et malesuada fames ac ante ipsum primis 
+            in faucibus. Vivamus tempor turpis a dui porta, at vestibulum mi auctor. 
+            Proin vulputate eros non porta auctor.
+        </p>
+    </div>
+
+</div>
+
+<div class="form-cover">
+    <img class="form-img" src="{% static 'imgs/form.jpg' %}" alt="Form Background">
+    <div class="form-overlay">
+        <h2>Contact Me</h2>
+        <form method="post" class="custom-form">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_name">Your Name</label>
+                {{ form.name }}
+            </div>
+            <div class="form-group">
+                <label for="id_email">Your Email</label>
+                {{ form.email }}
+            </div>
+            <div class="form-group">
+                <label for="id_message">Your Message</label>
+                {{ form.message }}
+            </div>
+            <button type="submit" class="btn submit-btn">Send</button>
+        </form>
+    </div>
+</div>
+
+
+    
+{% endblock %}

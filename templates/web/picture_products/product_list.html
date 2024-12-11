@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<div class="product-page">
+    <h2 class="product-title">Products</h2>
+    <div class="product-grid">
+        {% for product in products %}
+        <div class="product-item">
+            <a href="{% url 'picture_products:product_detail' product.pk %}" class="product-link">
+                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                <div class="overlay">
+                    <div class="overlay-text">
+                        <h3>{{ product.name }}</h3>
+                        <p>${{ product.price }}</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

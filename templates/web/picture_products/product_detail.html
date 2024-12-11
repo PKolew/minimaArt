@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<div class="product-detail-page">
+    <div class="product-detail-container">
+        <div class="product-image-container">
+            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+        </div>
+        <div class="product-info-container">
+            <h1 class="product-title">{{ product.name }}</h1>
+            <p class="product-price">${{ product.price }}</p>
+            <p class="product-description">{{ product.description }}</p>
+            <p class="product-size">Size: {{ product.size }}</p>
+            <a href="{% url 'picture_products:order_product' product.pk %}" class="buy-now-button">Order Now</a>
+        </div>
+    </div>
+</div>
+    <div class="reviews-section">
+    <h3>Reviews</h3>
+    {% for review in product.reviews.all %}
+        <div class="review">
+            <strong>{{ review.user.username }}</strong> - Rating: {{ review.rating }}/5
+            <p>{{ review.comment }}</p>
+            <small>Posted on {{ review.created_at }}</small>
+        </div>
+    {% empty %}
+        <p>No reviews yet. Be the first to review this product!</p>
+    {% endfor %}
+</div>
+
+<a href="{% url 'picture_products:submit_review' product.id %}" class="btn">Write a Review</a>
+{% endblock %}

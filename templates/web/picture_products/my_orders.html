@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+<div class="my-orders-container">
+    <h2>My Orders</h2>
+    {% if orders %}
+        <div class="orders-list">
+            {% for order in orders %}
+                <div class="order-item">
+                    <h3>Order #{{ order.id }}</h3>
+                    <p><strong>Product:</strong> {{ order.product.name }}</p>
+                    <p><strong>Date Ordered:</strong> {{ order.date_ordered|date:"F d, Y H:i" }}</p>
+                    <p><strong>Status:</strong> {{ order.status }}</p>
+                    <p><strong>Total Price:</strong> ${{ order.total_price }}</p>
+                    {% if order.wishes %}
+                        <p><strong>Wishes:</strong> {{ order.wishes }}</p>
+                    {% endif %}
+                    {% if order.size %}
+                        <p><strong>Size:</strong> {{ order.size }}</p>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>You have no orders yet.</p>
+    {% endif %}
+</div>
+{% endblock %}

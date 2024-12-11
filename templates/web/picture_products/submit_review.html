@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="review-form-container">
+    <h2>Leave a Review for {{ product.name }}</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn">Submit Review</button>
+    </form>
+</div>
+{% endblock %}
